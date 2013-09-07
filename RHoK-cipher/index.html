@@ -49,10 +49,10 @@
 
     <div class="container">
 
-      <div class="starter-template">
+     <!--  <div class="starter-template">
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
+      </div> -->
 	  
 	  <div id="encoder-container" class="jumbotron">
 		  <h1 id="">Get your training materials from the safe!</h1>
@@ -66,7 +66,21 @@
 	  	
 	  </div>
 
-    <input id="slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="26" data-slider-step="1" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="hide">
+    <input id="slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="25" data-slider-step="1" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="hide">
+
+    <h2 id="successMsg">
+      Correct! Well done!
+    </h2>
+
+    <p>Encrypted string:</p>
+    <input class="cryptbox" id="messageIn" type="text" readonly="true" value="CQN YJBBFXAM RB OXAHXDANHNBXWUH" size="50"></input>
+
+    <br />
+    <input class="cryptbox" id="messageOut" type="text" readonly="true" value="CQN YJBBFXAM RB OXAHXDANHNBXWUH" size="50"></input>
+
+    
+
+
 
     </div><!-- /.container -->
 
@@ -86,8 +100,42 @@
     });
       return out; 
     }
-    
-    $('#slider').slider()
+ 
+    function doDecrypt(rotValue) {
+      return rotX(messageIn, rotValue);
+    }
+
+    var doDecryptSlider = function() {
+
+      messageTest = doDecrypt(foo.getValue());
+      $('#encoder-inner').css({'-webkit-transform': 'rotate('+ (foo.getValue() * 13.84) +'deg)'})
+
+      if(foo.getValue() == correctRot)
+      {
+        // alert("Well done!");
+
+       $('#successMsg').css({'display':'block'}) 
+      } else {
+        $('#successMsg').css({'display':'none'})
+      }
+
+      $('#messageOut').val(messageTest);
+
+    }
+
+    var foo = $('#slider').slider().on('slide', doDecryptSlider).data('slider');
+
+    var messageIn = "CQN YJBBFXAM RB OXAHXDANHNBXWUH"; //rotX("THE PASSWORD IS FORYOUREYESONLY",9);
+    var correctRot = 17;
+    var messageOut = "";
+    var messageTest = "";
+
+
+
+
+
+
+
     </script>
   </body>
 </html>

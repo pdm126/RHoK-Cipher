@@ -20,3 +20,15 @@ div#encoder-inner{
 
 }
 
+
+input.cryptbox {
+	width:550px;
+	font-size: 24px;
+	font-family: "Courier New", Courier, monospace;
+}
+
+
+h2#successMsg {
+	display: none;
+}
+
