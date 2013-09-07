@@ -35,14 +35,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">RHoK: Cipher Challenge (Team Fairycakes)</a>
         </div>
         <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -55,28 +50,55 @@
       </div> -->
 	  
 	  <div id="encoder-container" class="jumbotron">
-		  <h1 id="">Get your training materials from the safe!</h1>
-		  
-		  <div id="encoder-outer">
-		  	
-		  </div>
-      <div id="encoder-inner">
-          
+      <h2 id="">ATTN AGENT: Retrieve your training materials from the safe!</h2>
+      
+      <div class="row">
+        <div class="col-md-8" id="encoder">
+          <div id="encoder-outer">
+        
+          </div>
+          <div id="encoder-inner">
+              
+          </div>
         </div>
+
+        <div class="col-md-4">
+          <div id="encoder-controls">
+
+            <label for="slider">Decryption Dial Rotation:</label>
+            <input id="slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="25" data-slider-step="1" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="hide">
+
+            <label for="messageIn">Encrypted message:</label>
+            <input class="cryptbox" id="messageIn" type="text" readonly="true" value="CQN YJBBFXAM RB OXAHXDANHNBXWUH" size="50"></input>
+
+            <label for="messageOut">Encoder ring output:</label>
+            <input class="cryptbox" id="messageOut" type="text" readonly="true" value="CQN YJBBFXAM RB OXAHXDANHNBXWUH" size="50"></input>
+
+            <div class="alert alert-success" id="successMsg">
+              <h2 id="successMsg">
+                Correct! Well done!
+              </h2>
+            </div>
+            <div class="alert alert-warning" id="incorrectMsg">
+              <h2 id="successMsg">
+                That's not the right combination. Try moving the slider to open the safe.
+              </h2>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+		 
+		  
+		  
+
+      
+
 	  	
 	  </div>
 
-    <input id="slider" type="text" class="span2" value="" data-slider-min="0" data-slider-max="25" data-slider-step="1" data-slider-value="1" data-slider-orientation="horizontal" data-slider-selection="after" data-slider-tooltip="hide">
 
-    <h2 id="successMsg">
-      Correct! Well done!
-    </h2>
-
-    <p>Encrypted string:</p>
-    <input class="cryptbox" id="messageIn" type="text" readonly="true" value="CQN YJBBFXAM RB OXAHXDANHNBXWUH" size="50"></input>
-
-    <br />
-    <input class="cryptbox" id="messageOut" type="text" readonly="true" value="CQN YJBBFXAM RB OXAHXDANHNBXWUH" size="50"></input>
 
     
 
@@ -114,9 +136,12 @@
       {
         // alert("Well done!");
 
-       $('#successMsg').css({'display':'block'}) 
+       $('#incorrectMsg').hide();
+       $('#successMsg').show(250);
+
       } else {
-        $('#successMsg').css({'display':'none'})
+        $('#successMsg').hide();
+        $('#incorrectMsg').show(250);
       }
 
       $('#messageOut').val(messageTest);
