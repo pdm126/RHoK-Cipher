@@ -1,0 +1,22 @@
+div#encoder-outer{
+	background-image:url('../img/Encoder-wheel.png');
+	width: 558px;
+	height:561px;
+	z-index: 0;
+	position: absolute;
+	/*-webkit-transform:rotate(50deg);*/
+}
+
+div#encoder-inner{
+	background-image:url('../img/Encoder-wheel.png');
+	background-size: contain;
+	width: 446px;
+	height:448px;
+	z-index: 1;
+	position: relative;
+	left:56px;
+	top:56.5px;
+	/*-webkit-transform:rotate(40deg);*/
+
+}
+

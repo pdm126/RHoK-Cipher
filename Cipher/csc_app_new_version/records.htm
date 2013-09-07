@@ -1,0 +1,81 @@
+<html>
+<head>
+<script type="text/javascript">
+function displayScores(){
+var myinfo, line;
+ var outDiv = document.getElementById('tab-body');
+  for( i in localStorage){
+      myinfo = JSON.parse(localStorage[i]);
+      if(myinfo[8] == 1){
+      line = "<tr class='bothright'><td>"+myinfo[0]+"</td><td>"+myinfo[1]+"</td><td>"+myinfo[2]+"</td><td>"+myinfo[3]+"</td><td>"+myinfo[4]+"</td><td class='number'>"+myinfo[5]+"</td><td class='number'>"+myinfo[6]+"</td><td class='number'>"+myinfo[7]+"</td><td class='number'>"+myinfo[8]+"</td></tr>";
+      } else if (myinfo[6] == 1) {
+      line = "<tr class='oneright'><td>"+myinfo[0]+"</td><td>"+myinfo[1]+"</td><td>"+myinfo[2]+"</td><td>"+myinfo[3]+"</td><td>"+myinfo[4]+"</td><td class='number'>"+myinfo[5]+"</td><td class='number'>"+myinfo[6]+"</td><td class='number'>"+myinfo[7]+"</td><td class='number'>"+myinfo[8]+"</td></tr>";
+      } else {
+      line = "<tr class='noneright'><td>"+myinfo[0]+"</td><td>"+myinfo[1]+"</td><td>"+myinfo[2]+"</td><td>"+myinfo[3]+"</td><td>"+myinfo[4]+"</td><td class='number'>"+myinfo[5]+"</td><td class='number'>"+myinfo[6]+"</td><td class='number'>"+myinfo[7]+"</td><td class='number'>"+myinfo[8]+"</td></tr>";
+      }
+
+      outDiv.innerHTML=outDiv.innerHTML+line;
+  }
+}
+
+function saveTextAsFile(){
+   var textToWrite = "<html><head><title>Cipher Challenge Records</title></head><body>" 
+   textToWrite += document.getElementById("output").innerHTML;
+   textToWrite += "</body></html>";
+   var textFileAsBlob = new Blob([textToWrite], {type:'text/html'});
+   var fileNameToSaveAs = document.getElementById("filename").value;
+
+   var downloadLink = document.createElement("a");
+   downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+   downloadLink.download = fileNameToSaveAs;
+   downloadLink.click();
+
+}
+
+function clear_store(){
+localStorage.clear()
+
+}
+
+</script>
+</head>
+
+<body>
+<div id="output">
+<style>
+td, th {
+   border:1px black solid;
+}
+td.number{
+   text-align:center;
+}
+tr.noneright{
+   background:#ff0000;
+}
+tr.oneright{
+   background: #01df3a;
+}
+tr.bothright{
+   background: lightblue;
+}
+th {
+    vertical-align:bottom;
+}
+</style>
+<table id="resultTable">
+<thead>
+<tr><th>First Name</th><th>Last Name</th><th>DoB</th><th>School</th><th>E-Mail</th><th>Tries<br/>(1st cipher)</th><th>Success?</th><th>Tries<br/>(2nd cipher)</th><th>Success?</th></tr>
+</thead>
+<tbody id="tab-body">
+
+</tbody>
+</table>
+</div>
+<button onclick="clear_store()">Clear Records</button>
+<form>
+<input id="filename"></input>
+<button onclick="saveTextAsFile();">Save text to file</button>
+</form>
+</body>
+<script>displayScores();</script>
+</html>
