@@ -1,0 +1,31 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+<script type="text/javascript" src="./assets/js/md5-min.js"></script>
+<script src="./assets/js/jquery-1.8.2.js"></script>
+<script src="./assets/js/jquery-ui.js"></script>
+</head>
+<body>
+
+
+
+<div id="output"> </div>
+
+<div id="right" style="visibility:hidden">
+<button id="harder">Give me a harder one!</button>
+<button id="finished">I'm finished. Submit my results</button>
+
+</div>
+ 
+ 
+</body>
+<script type="text/javascript">
+var prmstr = window.location.search.substr(1);
+name = prmstr.substring(prmstr.indexOf("username=")+9,prmstr.length);
+name=name.replace(/\+/g,' ');
+$("#output").html("Hello, " + name);
+
+	</script>
+
+</html>

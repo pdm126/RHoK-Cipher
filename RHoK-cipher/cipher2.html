@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <meta charset="utf-8" />
+    <title>Cyber Security Challenge Cipher 2</title>
+    <link rel="stylesheet" href="./assets/css/jquery-ui.css" />
+    <script src="./assets/js/jquery-1.8.2.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <style>
+     #key {
+       position: absolute;
+       top: 25%;
+       left: 860px;;
+       width: 430px;
+       height: 250px;
+       border: 2px solid black;
+       
+     }
+     table{
+        border: 2px solid black;
+     }
+
+     td {
+       border: 2px solid black;
+       text-align: center
+       vertical-align: middle;
+       height: 30px;
+       width: 30px;
+       font-size: 24px;
+       font-weight: bold;
+     }
+    </style>
+  <style>
+  #myCanvas {
+        cursor: crosshair;
+    }
+  </style>
+    <!-- Bootstrap core CSS -->
+  <link href="./assets/css/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+      <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">RHoK: Cipher Challenge (Team Fairycakes)</a>
+        </div>
+        <div class="collapse navbar-collapse">
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container" style="background-color:#ddd">
+      <div class="row" style="margin-top:60px; margin-left:20px;">
+        <h3 id="">ATTN AGENT: Match the horizontal and vertical letters from the clues on the right.</h3>
+      </div>
+      <div class="row" >
+        <div class="col-md-6" id="encoder">
+          <canvas id="myCanvas" width="550" height="575"></canvas>
+        </div>
+        <div class="col-md-6">
+          <h1>KEY=</h1>
+          <table>
+          <tr><td>R</td><td>	Q</td><td>	J</td><td>	D</td><td>	I</td><td>	B</td><td>	V</td><td>	F</td><td>	!</td></tr>
+          </table>
+          <br /> <br />
+          <h2>Your Solution:</h2>
+          <form name="answers" method="get" action="checker2.htm" autocomplete="off" />
+          <input type="text" name="answer" style="width:300px" autocomplete="off" /><input type="submit" value="Submit Solution" />
+          </form>
+        </div>
+      </div>
+      
+    </div>
+    <script>
+      var currentMousePos = { x: -1, y: -1 };
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 0, 0);
+        
+      };
+      imageObj.src = './assets/img/LevelTwoROT1.png';
+
+      $(document).mousemove(function(event) {
+        currentMousePos.x = event.pageX;
+        currentMousePos.y = event.pageY;
+        context.clearRect ( 0 , 0 , 1000 , 1000 );
+        context.drawImage(imageObj, 0, 0);
+        context.fillStyle="rgba(22, 44, 250, 0.5)";
+        context.fillRect(currentMousePos.x-10-$("#myCanvas").offset().left,0,20,imageObj.naturalWidth+20);
+        context.fillRect(0,currentMousePos.y-10- $("#myCanvas").offset().top,imageObj.naturalHeight,20);
+        
+     });
+     
+
+    </script>
+    
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./assets/js/jquery-2.0.3.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/bootstrap-slider.js"></script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+<script type="text/javascript" src="./assets/js/md5-min.js"></script>
+<script src="./assets/js/jquery-1.8.2.js"></script>
+<script src="./assets/js/jquery-ui.js"></script>
+</head>
+<body>
+
+
+
+<div id="output"> </div>
+<div id="hintbox" style="display:none;width:500px; padding:10px; margin:5px; border:1px blue dotted;"> In cryptography, a Caesar cipher, is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet. For example, with a left shift of 3, D would be replaced by A, E would become B, and so on. The method is named after Julius Caesar, who used it in his private.</div>
+<div id="wrong" style="visibility:hidden;">
+<button id="tryagain">Try Again</button>
+<button id="hint">Give me a Hint</button>
+<button id="giveup"> Give up on this!</button>
+</div> 
+
+<div id="right" style="visibility:hidden">
+<button id="harder">Give me a harder one!</button>
+<button id="finished">I'm finished. Submit my results</button>
+
+</div>
+ 
+ 
+</body>
+<script type="text/javascript">
+function doMD(){
+  var num_rows=localStorage.length;
+  var key="userdata."+(num_rows).toString();
+  // My test with json
+  var myinfo = JSON.parse(localStorage[key]);
+  myinfo[5] = myinfo[5]+1;
+
+
+  var prmstr = window.location.search.substr(1);
+  answer = prmstr.substring(prmstr.indexOf("answer=")+7,prmstr.length);
+  answer=answer.replace(/\+/g,' ');
+  md5pass = hex_md5(answer);
+  // alert(md5pass);
+  if(md5pass=="a54e549f884708fc85e0a0c95ac7b90a" || md5pass=="81bb815e4dbf592b71350675e9d0e29a" || md5pass=="ae7ac5ec81f178064352e51500afe8a5" || md5pass=="f17140508733f4e33e080ea4803b0328" || md5pass=="0e7d148b31e85c81f0fd90c16c11823e" || md5pass=="73509c631228a2494985c7a403e55b68" || md5pass=="87552fe15c819c2443e25bb6f137a57e" || md5pass=="01ac8fa52b4ec67918e8815d109cb432" || md5pass=="e05eab1bbbf429252508c50209a4ee1d" || md5pass=="b8feb5b3e53daeed8fa47f130fe63130" || md5pass=="6aca810f8cdad4b1e80cfccc361c8f5b" || md5pass=="416ea3ab05915eb49688b96a0f6ae260" || md5pass=="8ea3cfc0b3bc018ee72b74c7d24cce24" || md5pass=="47df98f4da3dd40aa51bf18e58a1464d"|| md5pass=="e419cc234eca77a9c97538fad6fd92fc" || md5pass=="4491f5e98bde2887d9db252729376525"|| md5pass=="82438febc64b807957737cff7b18bf0c"){
+  //correct
+  e = document.getElementById('output');
+  e.innerHTML="WELL DONE - We need your CYBER SECURITY SKILLS!"
+
+  myinfo[6] = 1 ;
+
+
+  // start of jquery button stuff for right answers
+    $("#right").css("visibility","visible");
+
+    $(function(){
+       $("#harder").click(function(){
+         window.location = "cipher2.htm";
+      });
+       $("#finished").click(function(){
+         window.location = "index.htm";
+      });
+    });
+
+  }
+  else{
+  //failed
+  e = document.getElementById('output');
+  e.innerHTML="Bad Luck, that solution is incorrect.<br>";
+  $("#wrong").css("visibility","visible");
+
+  // start of jquery button stuff
+    $(function() {
+        $("#tryagain").click(function(){
+           window.location = "cipher.htm";
+        });
+        $("#giveup").click(function(){
+            window.location = "index.htm";
+        });           
+       $("#hint").click(function(){
+            $("#hintbox").css("display","block");
+       });
+    });
+
+
+  }
+  textToAdd=JSON.stringify(myinfo);
+  localStorage[key]=textToAdd;
+}
+
+doMD();
+
+	</script>
+
+</html>

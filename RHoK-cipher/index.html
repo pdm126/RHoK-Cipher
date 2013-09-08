@@ -14,8 +14,8 @@
 
     <!-- Custom styles for this template -->
     <link href="./assets/css/starter-template.css" rel="stylesheet">
-	<link href="./assets/css/encoder.css" rel="stylesheet">
-  <link href="./assets/css/slider.css" rel="stylesheet">
+	  <link href="./assets/css/encoder.css" rel="stylesheet">
+    <link href="./assets/css/slider.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -76,7 +76,13 @@
 
             <div class="alert alert-success" id="successMsg">
               <h2 id="successMsg">
-                Correct! Well done!
+                Correct! Well done! Now please enter your name using the code:</br>
+                <form name="answers" method="get" action="wheelchecker.html" autocomplete="off" />
+                  <input id="input_name" size="10"></input></br>
+                  <input id="result_name" size="10" name="username" readonly="readonly"></input>
+                  <input type="submit" value="Submit Solution" />
+                </form>
+                <button>
               </h2>
             </div>
             <div class="alert alert-warning" id="incorrectMsg">
@@ -156,6 +162,11 @@
     var messageTest = "";
 
 
+
+    $("#input_name").on("input", function() {
+      console.log("hi");
+      $("#result_name").val(rotX($("#input_name").val(),foo.getValue()));
+    });
 
 
 

@@ -1,0 +1,53 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Cyber Security Challenge Cipher</title>
+    <link rel="stylesheet" href="./assets/css/jquery-ui.css" />
+    <script src="./assets/js/jquery-1.8.2.js"></script>
+    <script src="./assets/js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <style>
+    	#draggable { width: 507px; height: 528px; padding: 0px; border:none;float:right;}
+    </style>
+    <script>
+    $(function() {
+        $( "#draggable" ).draggable();
+    });
+    </script>
+  <!-- Bootstrap core CSS -->
+  <link href="./assets/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">RHoK: Cipher Challenge (Team Fairycakes)</a>
+        </div>
+        <div class="collapse navbar-collapse">
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div class="container" style="background-color:#ddd">
+      <div class="row" style="margin-top:60px; margin-left:20px;">
+        <h3 id="">ATTN AGENT: Solve it.</h3>
+      </div>
+      <img src="./assets/img/LevelTwoROT1.png"/>
+      <div align="center" id="draggable" class="ui-widget-content">
+          <img src="./assets/img/YourSkills1.png"/>
+      </div><br />
+      <form name="answers" method="get" action="checker.htm" autocomplete="off" />
+      <input type="text" name="answer" style="width:300px" autocomplete="off" /><input type="submit" value="Submit name" />
+      </form>
+    </div>
+  </div>
+
+ 
+</body>
+</html>
